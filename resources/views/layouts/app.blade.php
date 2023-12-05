@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    <div id="app" class="page-holder">
+    <div id="app" class="page-holder {{ request()->routeIs('frontend.detail') ? 'bg-light' : null }} " >
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -95,7 +95,7 @@
         <header class="header bg-white">
             <div class="container px-lg-3">
                 <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand"
-                        href="index.html"><span class="fw-bold text-uppercase text-dark">Boutique</span></a>
+                        href="{{route('frontend.index')}}"><span class="fw-bold text-uppercase text-dark">Boutique</span></a>
                     <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation"><span
@@ -103,29 +103,29 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <!-- Link--><a class="nav-link active" href="index.html">Home</a>
+                                <!-- L.ink--><a class="nav-link active" href="{{route('frontend.index')}}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <!-- Link--><a class="nav-link" href="shop.html">Shop</a>
+                                <!-- Link--><a class="nav-link" href="{{route("frontend.shop")}}">Shop</a>
                             </li>
                             <li class="nav-item">
-                                <!-- Link--><a class="nav-link" href="detail.html">Product detail</a>
+                                <!-- Link--><a class="nav-link" href="{{route("frontend.detail")}}">Product detail</a>
                             </li>
                             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown"
                                     href="#" data-bs-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">Pages</a>
                                 <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a
-                                        class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a
-                                        class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a
-                                        class="dropdown-item border-0 transition-link" href="detail.html">Product
+                                        class="dropdown-item border-0 transition-link" href="{{route('frontend.index')}}">Homepage</a><a
+                                        class="dropdown-item border-0 transition-link" href="{{route('frontend.shop')}}">Category</a><a
+                                        class="dropdown-item border-0 transition-link" href="{{route('frontend.detail')}}">Product
                                         detail</a><a class="dropdown-item border-0 transition-link"
-                                        href="cart.html">Shopping cart</a><a
-                                        class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a>
+                                        href="{{route('frontend.cart')}}">Shopping cart</a><a
+                                        class="dropdown-item border-0 transition-link" href="{{route('frontend.checkout')}}">Checkout</a>
                                 </div>
                             </li>
                         </ul>
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link" href="cart.html"> <i
+                            <li class="nav-item"><a class="nav-link" href="{{route('frontend.cart')}}"> <i
                                         class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small
                                         class="text-gray fw-normal">(2)</small></a></li>
                             <li class="nav-item"><a class="nav-link" href="#!"> <i
