@@ -18,26 +18,61 @@
 
     <!-- Fonts -->
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('backend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link href="{{asset('backend/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    @yield('style')
 
 </head>
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-        @include('partial.backend.sidebar')
+    <div id="app">
+        <div id="wrapper">
+            @include('partial.backend.sidebar')
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    @include('partial.backend.navbar')
+
+
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+
+                        @yield('content')
+
+                    </div>
+                </div>
+                @include('partial.backend.footer')
+            </div>
+        </div>
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        @include('partial.backend.modal')
     </div>
-   
-    <script src="js/front.js"></script>
+
+    <script src="{{ asset('js/front.js') }}"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{asset('backend/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('backend/js/sb-admin-2.min.js')}}"></script>
+    
+    @yield('script')
+    
     <script>
         // ------------------------------------------------------- //
         //   Inject SVG Sprite - 
