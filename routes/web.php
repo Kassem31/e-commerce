@@ -28,6 +28,6 @@ Route::get('/admin/forgot-password', [BackendController::class , 'forgot_passwor
 
 Route::get('/admin/index', [BackendController::class , 'index'])->name("backend.index");
 
-Auth::routes();
+Auth::routes(['verify => true']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
