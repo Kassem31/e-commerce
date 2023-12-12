@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -60,7 +61,6 @@ class EntrustSetupTables extends Migration
             $table->foreignId('permission_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->primary(['user_id', 'permission_id']);
         });
-
     }
 
     /**

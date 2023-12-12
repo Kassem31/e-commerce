@@ -63,14 +63,16 @@
         @include('partial.backend.modal')
     </div>
 
-    <script src="{{ asset('js/front.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('backend/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src="{{asset('backend/js/sb-admin-2.min.js')}}"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     @yield('script')
     
     <script>

@@ -29,6 +29,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
     ];
 
+    protected $appends = ['full_name'];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -47,4 +49,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getFullNameAttribute(): string
+    {
+        return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+    }
 }
