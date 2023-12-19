@@ -12,9 +12,12 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
-        "mindscms/entrust": "^2.6"
+        "mindscms/entrust": "^2.6",
+        "nicolaslopezj/searchable": "^1.13",
+        "predis/predis": "^2.2"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.9",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
