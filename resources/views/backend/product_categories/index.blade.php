@@ -5,12 +5,14 @@
     <div class="card-header py-3 d-flex">
         <h6 class="m-0 font-weight-bold text-primary">Product Categories</h6>
         <div class="ml-auto">
+            {{-- @ability('admin' , 'create_product_categories') --}}
             <a href="{{ route('admin.product_categories.create') }}" class="btn btn-primary">
                 <span class="icon text-white-50">
                     <i class="fa fa-plus"></i>
                 </span>
                 <span class="text">Add new category</span>
             </a>
+            {{-- @endability --}}
         </div>
     </div>
 
@@ -34,7 +36,7 @@
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->products_count }}</td>
                     <td>{{ $category->parent != null ? $category->parent->name : '-' }}</td>
-                    <td>{{ $category->status }}</td>
+                    <td>{{ $category->status() }}</td>
                     <td>{{ $category->created_at }}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
@@ -61,7 +63,7 @@
                 <tr>
                     <td colspan="6">
                         <div class="float-right">
-                            {!! $categories->links() !!}
+                            {!! $categories->appends(request()->all())->links() !!}
                         </div>
                     </td>
                 </tr>

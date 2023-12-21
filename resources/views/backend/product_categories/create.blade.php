@@ -67,3 +67,19 @@
 </div>
 
 @endsection
+
+@section('script')
+    <script>
+        $(function(){
+           $("#category-image").fileinput({
+               theme: "fas",
+               maxFileCount: 1,
+               allowedFileTypes: ['image'],
+               showCancel: true,
+               showRemove: false,
+               showUpload: false,
+               overwriteInitial: false
+           });
+        });
+    </script>
+@endsection

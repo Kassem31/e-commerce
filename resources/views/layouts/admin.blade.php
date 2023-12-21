@@ -18,14 +18,19 @@
 
     <!-- Fonts -->
     <!-- Custom fonts for this template-->
-    <link href="{{asset('backend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('backend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <link href="{{asset('backend/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    {{-- <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('backend/vendor/summernote/summernote-bs4.min.css') }}"> --}}
+    <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap-fileinput/css/fileinput.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css" crossorigin="anonymous">
     @yield('style')
 
 </head>
@@ -46,7 +51,7 @@
 
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
-
+                        @include('partial.backend.flash')
                         @yield('content')
 
                     </div>
@@ -63,18 +68,25 @@
         @include('partial.backend.modal')
     </div>
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('frontend/js/app.js') }}"></script>
+    <script src="{{ asset('backend/js/custom.js') }}"></script>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('backend/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-    <script src="{{asset('backend/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fa6/theme.min.js') }}"></script>
+
     @yield('script')
-    
+
     <script>
         // ------------------------------------------------------- //
         //   Inject SVG Sprite - 
