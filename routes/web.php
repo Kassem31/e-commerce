@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductCouponController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Backend\ProductReviewController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 
 /*
@@ -45,6 +46,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('products', ProductController::class);
         Route::resource('tags', TagController::class);
         Route::resource('product_coupons', ProductCouponController::class);
+        Route::resource('product_reviews', ProductReviewController::class);
     });
 
 });
