@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\ProductCouponController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -40,8 +41,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('/product_categories/remove_image', [ProductCategoriesController::class , 'remove_image'])->name("product_categories.remove_image");
         Route::resource('product_categories', ProductCategoriesController::class);
+        Route::post('/products/remove_image', [ProductController::class , 'remove_image'])->name("products.remove_image");
         Route::resource('products', ProductController::class);
         Route::resource('tags', TagController::class);
+        Route::resource('product_coupons', ProductCouponController::class);
     });
 
 });
