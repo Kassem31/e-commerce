@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
+use App\Http\Requests\Backend\CustomerRequest;
 
 class CustomerController extends Controller
 {
