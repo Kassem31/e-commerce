@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\City;
 use App\Models\State;
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CityRequest;
+use App\Http\Requests\Backend\CityRequest;
+use App\Models\State;
 
 class CityController extends Controller
 {
@@ -103,4 +106,3 @@ class CityController extends Controller
         return response()->json($cities);
     }
 }
-
