@@ -97,6 +97,10 @@ class StateController extends Controller
         ]);
     }
 
+    public function asd(){
+                 
+    }
+
     public function get_states(Request $request)
     {
         $states = State::whereCountryId($request->country_id)->whereStatus(true)->get(['id', 'name'])->toArray();
