@@ -48,11 +48,10 @@ class EntrustSeeder extends Seeder
             'email_verified_at' => now(),
             'mobile' => '96660000000',
             'password' => bcrypt('123123123'),
-            'user_image' => 'avatar.svg',
             'status' => 1,
             'remember_token' => Str::random(10),
         ]);
-        $admin->attachRole($adminRole);  
+        $admin->attachRole($adminRole);
 
         $supervisor = User::create([
             'first_name' => 'Supervisor',
@@ -62,12 +61,11 @@ class EntrustSeeder extends Seeder
             'email_verified_at' => now(),
             'mobile' => '96660000001',
             'password' => bcrypt('123123123'),
-            'user_image' => 'avatar.svg',
             'status' => 1,
             'remember_token' => Str::random(10),
         ]);
-        $supervisor->attachRole($supervisorRole);  
-        
+        $supervisor->attachRole($supervisorRole);
+
         $customer = User::create([
             'first_name' => 'Mahmoud',
             'last_name' => 'Hossam',
@@ -76,11 +74,10 @@ class EntrustSeeder extends Seeder
             'email_verified_at' => now(),
             'mobile' => '96660000002',
             'password' => bcrypt('123123123'),
-            'user_image' => 'avatar.svg',
             'status' => 1,
             'remember_token' => Str::random(10),
         ]);
-        $customer->attachRole($customerRole);  
+        $customer->attachRole($customerRole);
 
         // for($i=0 ; $i<20 ; $i++){
         //     $random_customer= User::create([
@@ -94,7 +91,7 @@ class EntrustSeeder extends Seeder
         //         'status' => 1,
         //         'remember_token' => Str::random(10),
         //     ]);
-        //     $random_customer->attachRole($customerRole);  
+        //     $random_customer->attachRole($customerRole);
         // }
 
        $customers = CustomerFactory::new()->count(20)->create();
@@ -102,7 +99,7 @@ class EntrustSeeder extends Seeder
         foreach ($customers as $customer) {
             $customer->attachRole($customerRole);
         }
-        
+
          $manageMain = Permission::create([
             'name' => 'main',
             'display_name' => 'Main',
@@ -118,7 +115,7 @@ class EntrustSeeder extends Seeder
         ]);
         $manageMain->parent_show = $manageMain->id;
         $manageMain->save();
-        
+
         //PRODUCT CATEGORIES
         $manageProductCategories = Permission::create([
             'name' => 'manage_product_categories',
@@ -295,6 +292,15 @@ class EntrustSeeder extends Seeder
         $displaysupervisors = Permission::create(['name' => 'display_supervisors', 'display_name' => 'Show Customer', 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.show', 'icon' => null, 'parent' => $mangeSupervisors->id, 'parent_original' => $mangeSupervisors->id, 'parent_show' => $mangeSupervisors->id, 'sidebar_link' => '1', 'appear' => '0']);
         $updatesupervisors = Permission::create(['name' => 'update_supervisors', 'display_name' => 'Update Customer', 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.edit', 'icon' => null, 'parent' => $mangeSupervisors->id, 'parent_original' => $mangeSupervisors->id, 'parent_show' => $mangeSupervisors->id, 'sidebar_link' => '1', 'appear' => '0']);
         $deletesupervisors = Permission::create(['name' => 'delete_supervisors', 'display_name' => 'Delete Customer', 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.destroy', 'icon' => null, 'parent' => $mangeSupervisors->id, 'parent_original' => $mangeSupervisors->id, 'parent_show' => $mangeSupervisors->id, 'sidebar_link' => '1', 'appear' => '0']);
-        
+
+         // SHIPPING COMPANIES
+        $manageShippingCompanies = Permission::create([ 'name' => 'manage_shipping_companies', 'display_name' => 'Shipping Companies', 'route' => 'shipping_companies', 'module' => 'shipping_companies', 'as' => 'shipping_companies.index', 'icon' => 'fas fa-truck', 'parent' => '0', 'parent_original' => '0', 'appear' => '1', 'ordering' => '90', ]);
+        $manageShippingCompanies->parent_show = $manageShippingCompanies->id; $manageShippingCompanies->save();
+        $showShippingCompanies = Permission::create([ 'name' => 'show_shipping_companies', 'display_name' => 'Shipping Companies', 'route' => 'shipping_companies', 'module' => 'shipping_companies', 'as' => 'shipping_companies.index', 'icon' => 'fas fa-truck', 'parent' => $manageShippingCompanies->id, 'parent_show' => $manageShippingCompanies->id, 'parent_original' => $manageShippingCompanies->id, 'appear' => '1', 'ordering' => '0', ]);
+        $createShippingCompanies = Permission::create([ 'name' => 'create_shipping_companies', 'display_name' => 'Create Shipping Company', 'route' => 'shipping_companies/create', 'module' => 'shipping_companies', 'as' => 'shipping_companies.create', 'icon' => null, 'parent' => $manageShippingCompanies->id, 'parent_show' => $manageShippingCompanies->id, 'parent_original' => $manageShippingCompanies->id, 'appear' => '0', 'ordering' => '0',]);
+        $displayShippingCompanies = Permission::create([ 'name' => 'display_shipping_companies', 'display_name' => 'Show Shipping Company', 'route' => 'shipping_companies/{shipping_companies}', 'module' => 'shipping_companies', 'as' => 'shipping_companies.show', 'icon' => null, 'parent' => $manageShippingCompanies->id, 'parent_show' => $manageShippingCompanies->id, 'parent_original' => $manageShippingCompanies->id, 'appear' => '0', 'ordering' => '0',]);
+        $updateShippingCompanies = Permission::create([ 'name' => 'update_shipping_companies', 'display_name' => 'Update Shipping Company', 'route' => 'shipping_companies/{shipping_companies}/edit', 'module' => 'shipping_companies', 'as' => 'shipping_companies.edit', 'icon' => null, 'parent' => $manageShippingCompanies->id, 'parent_show' => $manageShippingCompanies->id, 'parent_original' => $manageShippingCompanies->id, 'appear' => '0', 'ordering' => '0', ]);
+        $destroyShippingCompanies = Permission::create([ 'name' => 'delete_shipping_companies', 'display_name' => 'Delete Shipping Company', 'route' => 'shipping_companies/{shipping_companies}', 'module' => 'shipping_companies', 'as' => 'shipping_companies.delete', 'icon' => null, 'parent' => $manageShippingCompanies->id, 'parent_show' => $manageShippingCompanies->id, 'parent_original' => $manageShippingCompanies->id, 'appear' => '0', 'ordering' => '0', ]);
+
     }
 }
